@@ -1,0 +1,156 @@
+.main {
+    background-color: #E8E8E8;
+    padding: 10rem;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: grid;
+    place-items: center; 
+}
+
+.search {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search label {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search_box {
+    border: none;
+    width: 80%;
+    height: 60px;
+    border-radius: 30px;
+    padding: 30px;
+    font-size: 1.5rem;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+}
+.LoadingPage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 80px;
+    height: 100vh;
+    background-color: #F0F1F3;
+    z-index: 1;
+}
+
+.img {
+    animation: spin 4s linear infinite;
+    width: 30%;
+    height: 500px;
+    border-radius: 50%;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.LoadingPage h1 {
+    font-size: 3rem;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.LoadingPage h1 span {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeIn 0.8s ease infinite alternate;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(1em);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.LoadingPage h1 span:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.LoadingPage h1 span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.LoadingPage h1 span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.LoadingPage h1 span:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.LoadingPage h1 span:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.LoadingPage h1 span:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.LoadingPage h1 span:nth-child(7) {
+    animation-delay: 0.7s;
+}
+
+.LoadingPage h1 span:nth-child(8) {
+    animation-delay: 0.8s;
+}
+
+.LoadingPage h1 span:nth-child(9) {
+    animation-delay: 0.9s;
+}
+
+.LoadingPage h1 span:nth-child(10) {
+    animation-delay: 1s;
+}
+
+.button{
+    background-color: #ffffff;
+    border: none;
+    width: 100px;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 20px;
+}
+.button:hover{
+    background-color: #292929;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+        padding: 1rem;
+        height: 100vh;
+    }
+
+    .img {
+        animation: spin 4s linear infinite;
+        width: 100%;
+        height: 300px;
+        border-radius: 50%;
+    }
+
+}
