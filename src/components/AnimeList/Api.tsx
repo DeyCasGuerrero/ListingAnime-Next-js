@@ -1,16 +1,5 @@
-import ApiClient from '@/components/AnimeList/ApiClient';
-async function fetchAnimeData(animeId: any) {
-  try {
-    const apiUrl = process.env.API_URL;
-    const response = await fetch(`${apiUrl}/${animeId}/full`);
-    const data = await response.json();
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    return data;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
-}
+import ApiClient from '@/components/AnimeList/ApiClient'
+import { fetchAnimeData } from './ApiAnime';
 
 // function bucle(): number[] {
 //   const ids: number[] = [];

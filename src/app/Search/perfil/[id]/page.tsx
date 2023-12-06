@@ -4,21 +4,17 @@ import BotonTrailer from "@/components/ClientProfile/BotonTrailer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faChartSimple, faUser, faHeart } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image';
+import { fetchAnimeData } from "@/components/AnimeList/ApiAnime";
 async function filterByID(id: number) {
-  try {
-    const apiUrl = process.env.API_URL;
-    const res = await fetch(`${apiUrl}/${id}/full`);
-    const data = await res.json();
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    return data;
-  } catch (error) {
-    console.error("Error en la función filterByID:", error);
-    return null;
-  }
+  return await fetchAnimeData(id);
 }
 
 async function Profile({ params }) {
   const posts = await filterByID(params.id);
+  if (!posts || !posts.data) {
+    return <div>Error obteniendo datos del anime.</div>;
+  }
+
   return (
     <>
       <main className={styles.main} key={posts.data.mal_id}>

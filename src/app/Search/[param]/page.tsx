@@ -1,23 +1,10 @@
 import styles from "@/app/page.module.css"
 import Link from 'next/link';
 import MyToast from '@/components/Dependencias/MyToast';
+import { fetchAnimeData } from "@/components/AnimeList/ApiAnime";
 function quitarAcentos(cadena: string): string {
     return cadena.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
-
-async function fetchAnimeData(animeId: number) {
-    try {
-        const apiUrl = process.env.API_URL;
-        const response = await fetch(`${apiUrl}/${animeId}/full`);
-        const responseData = await response.json();
-        await new Promise((resolve) => setTimeout(resolve, 3000));
-        return responseData;
-    } catch (error) {
-        console.log(error);
-        return null;
-    }
-}
-
 async function filterByParams(params: string, campo: 'title' | 'title_english' | 'title_japanese' | 'type' | 'source') { //diferentes parametros para implementra a futuro
     const parametroBuscada = quitarAcentos(params.toLowerCase());
 
