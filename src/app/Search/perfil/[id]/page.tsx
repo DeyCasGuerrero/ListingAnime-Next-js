@@ -19,6 +19,7 @@ async function Profile({ params }) {
       <main className={styles.main} key={posts.data.mal_id}>
         <aside className={styles.aside}>
           <Image
+
             src={posts.data.images.jpg.image_url}
             height={0}
             width={1000}
@@ -77,12 +78,12 @@ async function Profile({ params }) {
             <h1>Relacionado</h1>
             <ul className={styles.cardsContainer}>
               {posts.data.relations.map((relation: any, index: number) => (
-                <div className={styles.cards}>
-                  <li key={index}>
+                <div className={styles.cards} key={index}>
+                  <li>
                     <p>Relación: {relation.relation}</p>
                     <ul>
-                      {relation.entry.map((entry: any) => (
-                        <AnimeRelation entry={entry}></AnimeRelation>
+                      {relation.entry.map((entry: any, entryIndex: number) => (
+                        <AnimeRelation key={entryIndex} entry={entry}></AnimeRelation>
                       ))}
                     </ul>
                   </li>
