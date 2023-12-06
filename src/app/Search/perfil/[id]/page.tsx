@@ -5,11 +5,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faChartSimple, faUser, faHeart } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image';
 async function filterByID(id: number) {
-  const apiUrl = process.env.API_URL;
-  const res = await fetch(`${apiUrl}/${id}/full`);
-  const data = await res.json();
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-  return data;
+  try {
+    const apiUrl = process.env.API_URL;
+    const res = await fetch(`${apiUrl}/${id}/full`);
+    const data = await res.json();
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    return data;
+  } catch (error) {
+    console.error("Error en la función filterByID:", error);
+    return null;
+  }
 }
 
 async function Profile({ params }) {
