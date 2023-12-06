@@ -3,7 +3,7 @@ import AnimeRelation from "@/components/ClientProfile/AnimeRelation";
 import BotonTrailer from "@/components/ClientProfile/BotonTrailer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faChartSimple, faUser, faHeart } from '@fortawesome/free-solid-svg-icons'
-
+import Image from 'next/image';
 async function filterByID(id: number) {
   const apiUrl = process.env.API_URL;
   const res = await fetch(`${apiUrl}/${id}/full`);
@@ -18,10 +18,14 @@ async function Profile({ params }) {
     <>
       <main className={styles.main} key={posts.data.mal_id}>
         <aside className={styles.aside}>
-          <img src={posts.data.images.jpg.image_url} alt="animeImage"></img>
+          <Image
+            src={posts.data.images.jpg.image_url}
+            height={0}
+            width={1000}
+            alt="animeImage" />
           <BotonTrailer posts={posts}></BotonTrailer>
           <div className={styles.info}>
-            <hr/>
+            <hr />
             <h4>{posts.data.type}</h4>
             <hr />
             <h4>Estado: {posts.data.status}</h4>
@@ -37,7 +41,7 @@ async function Profile({ params }) {
             <ul>
               <li>Desde: {posts.data.aired.from ? new Date(posts.data.aired.from).toLocaleDateString() : 'Fecha no disponible'}</li>
               <li>Hasta: {posts.data.aired.to ? new Date(posts.data.aired.to).toLocaleDateString() : 'Fecha no disponible'}</li>
-              <li>Duración: {posts.data.aired.string? posts.data.aired.string : 'Fecha no disponible' }</li>
+              <li>Duración: {posts.data.aired.string ? posts.data.aired.string : 'Fecha no disponible'}</li>
               <li>Temporada: {posts.data.season}</li>
             </ul>
           </div>

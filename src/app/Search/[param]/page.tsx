@@ -63,7 +63,6 @@ function bucle(): number[] {
 async function ListAnime({ params }) {
     const parametro = params.param ? decodeURIComponent(params.param) : '';
     const postsByTitulo = await filterByParams(parametro, 'title');
-    console.log(postsByTitulo);
     if (!postsByTitulo) {
         return <NotFound />;
     }
