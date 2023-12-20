@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faPaperclip } from '@fortawesome/free-solid-svg-icons'
 
 export default function AnimeRelation({ entry }) {
-    const dataTrailer = entry.url || ''
+    const myAnimeList = entry.url || ''
     const handleClick = () => {
-        if (dataTrailer !== '') {
-            window.open(dataTrailer, "_blank");
+        if (myAnimeList !== '') {
+            window.open(myAnimeList, "_blank");
         } else {
             console.log("URL del trailer vacía");
         }

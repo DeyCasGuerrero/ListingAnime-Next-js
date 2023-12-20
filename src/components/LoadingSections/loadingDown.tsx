@@ -1,5 +1,4 @@
 import styles from '@/app/search.module.css'
-import Image from 'next/image'
 function LoadingSection(){
     
     return(

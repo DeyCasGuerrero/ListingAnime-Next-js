@@ -5,7 +5,11 @@ import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { useState } from "react";
 
 export default function BotonTrailer({ posts }) {
-    const dataTrailer = posts.data.trailer?.url || '';
+    let dataTrailer = '';
+
+    if (posts && posts.data && posts.data.trailer && posts.data.trailer.url) {
+        dataTrailer = posts.data.trailer.url;
+    }
     const [showMensaje, setShowMensaje] = useState(false);
 
     const handleClick = () => {

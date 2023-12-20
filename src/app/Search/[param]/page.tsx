@@ -10,15 +10,13 @@ async function filterByParams(params: string, campo: 'title' | 'title_english' |
 
     try {
         let ids: number[] = bucle();
-        const mapAnimesID = ids.map(async (id) => {
-            return await fetchAnimeData(id);
-        });
+        const mapAnimesID = ids.map(async (id) => await fetchAnimeData(id));
         const responseDataArray = await Promise.all(mapAnimesID);
         //LO QUE HAGO AQUI ES TRASFORMA EL JSON EN UNA LISTA, ESTO DEBIDO A QUE ESTÁN COMPUESTOS DE OBJETOS ANIDADOS
         const data = responseDataArray.flatMap(responseData => responseData.data || []);
 
         const respuesta = data.filter(item =>
-            quitarAcentos(item[campo].toLowerCase()).includes(parametroBuscada));
+        quitarAcentos(item[campo].toLowerCase()).includes(parametroBuscada));
 
         if (respuesta.length > 0) {
             console.log("Se encontró esto xddd");

@@ -1,13 +1,13 @@
-"use client"
 import styles from "@/app/page.module.css"
 import Link from "next/link"
 import MyToast from "../Dependencias/MyToast"
-export default function AnimeClient({post}) {
+export default function Data({post}) {
     if (!post || !post.data) {
-        return null; 
+        return null;
+        console.log("ES NULO EL POST") 
     }
     return (
-        <div className={styles.card}>
+        <div className={styles.card} key={post.mal_id}>
             <div className={styles.cardContent}>
                 <h2>TITULO: {post.data.title}</h2>
                 <h4>Episodios: {post.data.episodes}</h4>

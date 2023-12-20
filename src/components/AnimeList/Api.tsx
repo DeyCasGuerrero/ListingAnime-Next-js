@@ -1,13 +1,7 @@
-import ApiClient from '@/components/AnimeList/ApiClient'
+import ApiClient from '@/components/AnimeList/Data'
 import { fetchAnimeData } from './ApiAnime';
+import React from 'react';
 
-// function bucle(): number[] {
-//   const ids: number[] = [];
-//   for (let i = 1; i <= 479; i++) {
-//     ids.push(i);
-//   }
-//   return ids;
-// }
 function Random(): number[] {
   const randomNumbers: number[] = [];
   while (randomNumbers.length <= 5) {
@@ -20,23 +14,24 @@ function Random(): number[] {
   return randomNumbers;
 }
 
-async function List(/*{ useRandom = false }: { useRandom?: boolean }*/) {
+async function List() {
 
-  let ids: number[]=Random();
-  // if (useRandom) {
-  //   ids = Random();
-  // } else {
-  //   ids = bucle();
-  // }
+  const ids: number[] = Random();
+
   const mapAnimesID = ids.map(async (id) => {
     return await fetchAnimeData(id);
   });
   const posts = await Promise.all(mapAnimesID);
-  
+  console.log(posts)
+
   return (
     <div>
-      {posts.map(post => (
-        <ApiClient post={post} key={post.data?.mal_id}></ApiClient>
+      {posts.map((post, index) => (
+        <React.Fragment key={index}>
+          {post && post.data && post.data.mal_id && (
+            <ApiClient post={post} key={post.data.mal_id} />
+          )}
+        </React.Fragment>
       ))}
     </div>
   );

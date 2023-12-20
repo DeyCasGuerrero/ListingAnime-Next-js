@@ -1,4 +1,4 @@
-export async function fetchAnimeData(animeId: any) {
+export async function fetchAnimeData(animeId: number) {
     try {
         const apiUrl = process.env.API_URL;
         const response = await fetch(`${apiUrl}/${animeId}/full`);
