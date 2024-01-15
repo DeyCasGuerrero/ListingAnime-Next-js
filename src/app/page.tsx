@@ -1,8 +1,5 @@
 import Image from 'next/image'
 import styles from './page.module.css'
-import List from '../components/AnimeList/Api'
-import { Suspense } from 'react'
-import LoadingSection from '@/components/LoadingSections/loadingDown'
 export default function Home() {
   return (
     <>
@@ -60,12 +57,7 @@ export default function Home() {
           <p> encuentra tus animes favoritos!</p>
         </div>
       </main>
-      <section className={styles.contentAnime}>
-        <h1>ANIMES RANDOMS</h1>
-        <Suspense fallback={<LoadingSection></LoadingSection>}>
-          <List /*useRandom*/ ></List>
-        </Suspense>
-      </section>
+    
     </>
   )
 

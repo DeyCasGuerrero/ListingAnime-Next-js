@@ -1,4 +1,3 @@
-"use client"
 import styles from "@/app/search.module.css"
 import Input from "@/components/Search/Input";
 export default function Searching() {

@@ -2,6 +2,7 @@ import styles from "@/app/page.module.css"
 import Link from 'next/link';
 import MyToast from '@/components/Dependencias/MyToast';
 import { fetchAnimeData } from "@/components/AnimeList/ApiAnime";
+import React from "react";
 function quitarAcentos(cadena: string): string {
     return cadena.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
@@ -16,7 +17,7 @@ async function filterByParams(params: string, campo: 'title' | 'title_english' |
         const data = responseDataArray.flatMap(responseData => responseData.data || []);
 
         const respuesta = data.filter(item =>
-        quitarAcentos(item[campo].toLowerCase()).includes(parametroBuscada));
+            quitarAcentos(item[campo].toLowerCase()).includes(parametroBuscada));
 
         if (respuesta.length > 0) {
             console.log("Se encontró esto xddd");
@@ -26,8 +27,8 @@ async function filterByParams(params: string, campo: 'title' | 'title_english' |
             return null;
         }
     } catch (error) {
-        console.log(error);
-        return null;
+        console.error("Error en filterByParams:", error);
+        return <div>Error al cargar los datos</div>;
     }
 }
 
@@ -54,27 +55,21 @@ async function ListAnime({ params }) {
 
     return (
         <div>
-            {postsByTitulo.length > 0 && (
-                <>
-                    {postsByTitulo.map((post) => (
-                        <>
-                            <div className={styles.card}>
-                                <div className={styles.cardContent} key={post.mal_id}>
-                                    <h2>TITULO: {post.title}</h2>
-                                    <h4>Episodios: {post.episodes}</h4>
-                                    <h4>Tipo: {post.type}</h4>
-                                    <h4>Popularidad: {post.popularity}</h4>
-                                    <p>Duracion: {post.duration}</p>
-                                    <h4>Seguidores: {post.members} (miembros)</h4>
-                                    <Link href={`/Search/perfil/${post.mal_id}`}><MyToast></MyToast></Link>
-                                </div>
-                            </div>
-                        </>
-
-                    ))}
-                </>
-            )}
-
+            {postsByTitulo.map((post) => (
+                <React.Fragment key={post.mal_id}>
+                    <div className={styles.card}>
+                        <div className={styles.cardContent}>
+                            <h2>TITULO: {post.title}</h2>
+                            <h4>Episodios: {post.episodes}</h4>
+                            <h4>Tipo: {post.type}</h4>
+                            <h4>Popularidad: {post.popularity}</h4>
+                            <p>Duracion: {post.duration}</p>
+                            <h4>Seguidores: {post.members} (miembros)</h4>
+                            <Link href={`/Search/perfil/${post.mal_id}`}><MyToast></MyToast></Link>
+                        </div>
+                    </div>
+                </React.Fragment>
+            ))}
         </div>
     );
 }
