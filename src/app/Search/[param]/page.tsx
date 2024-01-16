@@ -55,22 +55,27 @@ async function ListAnime({ params }) {
 
     return (
         <div>
-            {postsByTitulo.map((post) => (
-                <React.Fragment key={post.mal_id}>
-                    <div className={styles.card}>
-                        <div className={styles.cardContent}>
-                            <h2>TITULO: {post.title}</h2>
-                            <h4>Episodios: {post.episodes}</h4>
-                            <h4>Tipo: {post.type}</h4>
-                            <h4>Popularidad: {post.popularity}</h4>
-                            <p>Duracion: {post.duration}</p>
-                            <h4>Seguidores: {post.members} (miembros)</h4>
-                            <Link href={`/Search/perfil/${post.mal_id}`}><MyToast></MyToast></Link>
+        {Array.isArray(postsByTitulo) && postsByTitulo.length > 0 && (
+            <>
+                {postsByTitulo.map((post) => (
+                    <React.Fragment key={post.mal_id}>
+                        <div className={styles.card}>
+                            <div className={styles.cardContent}>
+                                <h2>TITULO: {post.title}</h2>
+                                <h4>Episodios: {post.episodes}</h4>
+                                <h4>Tipo: {post.type}</h4>
+                                <h4>Popularidad: {post.popularity}</h4>
+                                <p>Duracion: {post.duration}</p>
+                                <h4>Seguidores: {post.members} (miembros)</h4>
+                                <Link href={`/Search/perfil/${post.mal_id}`}><MyToast></MyToast></Link>
+                            </div>
                         </div>
-                    </div>
-                </React.Fragment>
-            ))}
-        </div>
+                    </React.Fragment>
+                ))}
+            </>
+        )}
+
+    </div>
     );
 }
 export default ListAnime;
