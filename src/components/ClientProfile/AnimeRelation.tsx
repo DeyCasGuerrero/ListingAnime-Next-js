@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import styles from "@/app/profile.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faPaperclip } from '@fortawesome/free-solid-svg-icons'

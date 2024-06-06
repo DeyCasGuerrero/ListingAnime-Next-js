@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import {Toaster, toast } from 'sonner';
 import styles from '@/app/page.module.css'
 export default function MyToast() {

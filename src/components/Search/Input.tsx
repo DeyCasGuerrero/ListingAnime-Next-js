@@ -1,6 +1,7 @@
-"use client"
+'use client';
+
 import styles from "@/app/search.module.css"
-import ScriptSearch from "./ScriptSearch"
+import {ScriptSearch} from "./ScriptSearch"
 
 export default function Input() {
 

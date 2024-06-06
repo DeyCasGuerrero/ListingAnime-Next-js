@@ -4,8 +4,8 @@ const nextConfig = {}
 module.exports = nextConfig
 // next.config.js
 module.exports = {
-    images: {
-      domains: ['cdn.myanimelist.net'],
-    },
+    // images: {
+    //   // domains: ['cdn.myanimelist.net'],
+    // },
   }
   

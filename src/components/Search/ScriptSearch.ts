@@ -1,7 +1,8 @@
+'use client';
 import { useRouter } from 'next/navigation';
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 
-export default function ScriptSearch() {
+export function ScriptSearch() {
 
     const router = useRouter();
     const [value, setValue] = useState<string>('');

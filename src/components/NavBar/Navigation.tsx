@@ -1,4 +1,5 @@
-"use client"
+'use client';
+
 import style from "@/app/page.module.css";
 import Link from "next/link";
 import Image from "next/image";
